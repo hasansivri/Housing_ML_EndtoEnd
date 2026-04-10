@@ -20,12 +20,14 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Image
+        # Burada ./src/api kısmını sildik, yerine sadece . koyduk.
+        # İmaj ismindeki /src/api kısmını da daha standart olan /flask-api ile güncelledim.
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/src/api:latest ./src/api
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/flask-api:latest .
 
       - name: Push Image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/src/api:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/flask-api:latest
 
 
 
